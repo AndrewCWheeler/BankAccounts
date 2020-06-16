@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model User
+
+<div class="row">
+    <div class="col mt-2 mb-4 text-center">
+        <h1 class="text-primary">Sign-Up!</h1>
+    </div>
+</div>
+<div class="row my-3 justify-content-center">
+    <div class="col col-sm-6 mx-3">
+
+        <form class="form" asp-action="Registering" asp-controller="Home" method="POST">
+            <div class="form-group">
+                <label for="FirstName" class="col-form-label d-none d-sm-block">First Name</label>
+                <input asp-for="FirstName" class="form-control form-control-lg" placeholder="First Name">
+                <span class="text-danger" asp-validation-for="FirstName"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="LastName" class="col-form-label d-none d-sm-block">Last Name</label>
+                <input asp-for="LastName" class="form-control form-control-lg" placeholder="Last Name">
+                <span class="text-danger" asp-validation-for="LastName"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Email" class="col-form-label d-none d-sm-block">Email</label>
+                <input asp-for="Email" class="form-control form-control-lg" placeholder="Email">
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Password" class="col-form-label d-none d-sm-block">Password</label>
+                <input asp-for="Password" class="form-control form-control-lg" placeholder="Password">
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Confirm" class="col-form-label d-none d-sm-block">Confirm Password</label>
+                <input asp-for="Confirm" class="form-control form-control-lg" placeholder="Confirm Password">
+                <span class="text-danger" asp-validation-for="Confirm"></span>
+            </div>
+
+            <div class="mt-4 form-group">
+                <button class="btn btn-outline-primary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <p class="mt-5 mb-1">Already signed up?</p>
+            <a href="/Login">Login</a>
+        </div>
+    </div>
+</div>

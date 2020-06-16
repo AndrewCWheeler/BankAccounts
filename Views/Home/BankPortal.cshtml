@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Bank Portal";
+}
+@model Transaction
+
+<div class="row mb-5">
+    <div class="col-sm-6">
+        <h1>Welcome, @ViewBag.LoggedUser.FirstName</h1>
+        <span class="text-danger">@TempData["error"]</span>
+    </div>
+    <div class="col-sm-6">
+        <p class="float-right">Current Balance: @ViewBag.LoggedUser.Balance.ToString("0.00")</p>
+    </div>
+</div>
+<form class="form-group row" asp-action="Transacting" asp-controller="Home">
+    <label for="Amount" class="col-sm-2 col-form-label">Deposit/Withdraw</label>
+    <div class="col-sm-5">
+        <input asp-for="Amount" id="Amount" type="range" class="custom-range" min="-400" max="400" step="20" class="form-control col-sm-6 form-control-lg">
+    </div>
+    <div class="col-sm-1">
+        <p class="text-primary float-right">$</p>
+    </div>
+    <span class="font-weight-bold text-primary ml-2 valueSpan2 text-primary"></span>
+    @* <span>asp-validation-for=??</span> *@
+    <div class="col col-sm-2 ml-5">
+        <button class="btn btn-outline-success btn-lg">Transact</button>
+    </div>
+</form>
+<table class="my-3 table table-striped">
+    <tr>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    @foreach(var t in ViewBag.LoggedUser.Transactions)
+    {
+        <tr>
+            <td>$@t.Amount.ToString("0.00")</td>
+            <td>@t.CreatedAt</td>
+        </tr>
+    }
+</table>
+<div class="row">
+    <div class="mt-5 col text-center">
+        <a href="/Logout" class="btn btn-outline-primary btn-lg">Logout</a>
+    </div>
+</div>
